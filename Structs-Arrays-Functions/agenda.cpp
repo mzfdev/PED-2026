@@ -28,6 +28,21 @@ struct Contacto{
 const int contactos_maximos = 100;
 Contacto agenda[contactos_maximos];
 
+void mostrarAgenda(Contacto agenda[], int n){
+    cout<<"Agenda de contactos \n";
+
+    if(n == 0){
+        cout<<"No hay contactos\n";
+        return;
+    }
+
+    for(int i = 0; i < n; i++){
+        cout<<"Nombre: "<<agenda[i].nombre<<endl;
+        cout<<"Telefono: "<<agenda[i].telefono<<endl;
+        cout<<"Email: "<<agenda[i].email<<endl;
+    }
+}
+
 int main(){
     return 0;
 }
