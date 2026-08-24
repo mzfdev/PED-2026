@@ -92,6 +92,36 @@ void mostrarEncontrado(Contacto agenda[], int n){
     cout<<"Email: "<<agenda[pos].email<<endl;
 }
 
+void mostrarMenu(){
+    cout<<"Seleccione una opcion"<<endl;
+    cout<<"1. Mostrar agenda completa"<<endl;
+    cout<<"2. Agregar contacto nuevo"<<endl;
+    cout<<"3. Mostrar contacto encontrado"<<endl;
+}
+
+void ejecutarAgenda(){
+    int opc;
+    do{
+        mostrarMenu();
+        cin>>opc;
+
+        switch(opc){
+            case 1:
+                mostrarAgenda(agenda, totalContactos);
+                break;
+            case 2:
+                totalContactos = agregarContacto(agenda, totalContactos);
+                break;
+            case 3:
+                mostrarEncontrado(agenda, totalContactos);
+                break;
+            default:
+                cout<<"Opcion no valida"<<endl;
+        }
+    }while(opc!=4);
+}
+
 int main(){
+    ejecutarAgenda()
     return 0;
 }
