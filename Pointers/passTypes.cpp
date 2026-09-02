@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 //Paso por valor
 void cambiarValor(int a){
     a = 20;
@@ -29,9 +27,9 @@ int main(){
     cout<<"a luego de ejecutar funcion: "<<a<<endl; 
     */
 
-    cout<<"ptr: "<<ptr<<endl; // 10
+    std::cout<<"ptr: "<<ptr<<endl; // 10
     cambiarValorReferenciaPtr(ptr);
-    cout<<"ptr luego de ejecutar funcion: "<<ptr<<endl; 
-    
+    std::cout<<"ptr luego de ejecutar funcion: "<<ptr<<endl; 
+
     return 0;
 }
