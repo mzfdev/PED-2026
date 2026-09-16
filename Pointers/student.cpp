@@ -29,7 +29,7 @@ void MostrarEstudiante(const Estudiante* estudiante);
 void ModificarPromedio(Estudiante* estudiante, float nuevo_promedio);
 bool Aprobo(const Estudiante* estudiante);
 
-int main(){
+int main(){  
 
     Estudiante student {
         "Pepito",

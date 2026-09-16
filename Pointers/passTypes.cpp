@@ -22,6 +22,18 @@ int main(){
     int *ptr = &a;
 
     /*
+    void cambiarValorReferencia(int& b){
+        b = 0;
+    } 
+    void cambiarValorReferencia(int* b){
+        b = 0;
+    } 
+    */
+
+    cambiarValorReferencia(a);
+    cambiarValorReferencia(ptr);
+
+    /*
     cout<<"a: "<<a<<endl; // 10
     cambiarValorReferencia(a);
     cout<<"a luego de ejecutar funcion: "<<a<<endl; 
