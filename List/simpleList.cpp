@@ -48,6 +48,31 @@ void FreeList(Node*& head){
     }
 }
 
+void DeleteValue(Node*& head, int value){
+
+    if(head == nullptr){
+        return;
+    }
+
+    //Si el elemento esta en el primer nodo
+    if(head->data == value){
+        Node* temp = head;
+        head=head->next;
+        delete temp;
+        return;
+    }
+    
+    Node* current = head;
+
+    while(
+        current->next != nullptr &&
+        current->next->data != value
+    ){
+        current=current->next;
+    }
+
+}
+
 int main(){
     Node* lista1 = nullptr;
     Node* lista2 = nullptr;
