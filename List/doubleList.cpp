@@ -3,15 +3,21 @@
 struct Node{
     int data;
     Node* next;
+    Node* prev;
 };
 
 void Insert(Node*& head, int data){
-    Node* new_node = new Node{data, head};
+    Node* new_node = new Node{data, head, nullptr};
+
+    if(head != nullptr){
+        head->prev = new_node;
+    }
+
     head = new_node;
 }
 
 void InsertAtEnd(Node*& head, int data){
-    Node* new_node = new Node{data, nullptr};
+    Node* new_node = new Node{data, nullptr, nullptr};
 
     //Si esto ocurre es porque la lista esta vacia
     if(head == nullptr){
@@ -27,6 +33,7 @@ void InsertAtEnd(Node*& head, int data){
     }
 
     current->next = new_node;
+    new_node->prev = current;
 }
 
 void PrintList(Node* head){
@@ -35,6 +42,27 @@ void PrintList(Node* head){
     while(current != nullptr){
         std::cout<<current->data<<" -> ";
         current = current->next;
+    }
+
+    std::cout<<std::endl;
+}
+
+void PrintListReverse(Node* head){
+    Node* current = head;
+
+    while(current != nullptr){
+        std::cout<<current->data<<" -> ";
+        current = current->next;
+    }
+
+    std::cout<<std::endl;
+
+    //Para este punto ya estoy al final de la lista
+    current = current->prev;
+
+    while(current != nullptr){
+        std::cout<<current->data<<" -> ";
+        current = current->prev;
     }
 
     std::cout<<std::endl;
@@ -58,6 +86,11 @@ void DeleteValue(Node*& head, int value){
     if(head->data == value){
         Node* temp = head;
         head=head->next;
+
+        if(head != nullptr){
+            head->prev = nullptr;
+        }
+
         delete temp;
         return;
     }
@@ -75,6 +108,12 @@ void DeleteValue(Node*& head, int value){
     if(current->next != nullptr){
         Node* temp = current->next;
         current->next = current->next->next;
+
+        if(current->next != nullptr){
+            //El anterior del siguiente de current debe ser current
+            current->next->prev = current;
+        }
+
         delete temp;
     }
 
@@ -91,6 +130,8 @@ int main(){
         std::cout<<"2. Insertar al final"<<std::endl;
         std::cout<<"3. Imprimir lista"<<std::endl;
         std::cout<<"4. Liberar memoria"<<std::endl;
+        std::cout<<"5. Eliminar valor"<<std::endl;
+        std::cout<<"6. Imprimir hacia atras"<<std::endl;
         std::cin>>option;
 
         switch(option){
@@ -119,6 +160,17 @@ int main(){
             case 4:{
                 std::cout<<"Liberando memoria..."<<std::endl;
                 FreeList(lista1);
+                break;
+            }
+            case 5:{
+                int n;
+                std::cout<<"Ingrese un numero: ";
+                std::cin>>n;
+                DeleteValue(lista1, n);
+                break;
+            }
+            case 6:{
+                PrintListReverse(lista1);
                 break;
             }
             default:{
