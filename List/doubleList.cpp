@@ -47,6 +47,17 @@ void PrintList(Node* head){
     std::cout<<std::endl;
 }
 
+void PrintListR(Node* head){
+    //caso base
+    if(head == nullptr){
+        return;
+    }
+    cout<<head->data<<"->";
+    //caso recursivo
+    PrintListR(head->next);
+}
+
+
 void PrintListReverse(Node* head){
     Node* current = head;
 
